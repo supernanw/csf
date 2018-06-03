@@ -13,7 +13,7 @@ public:
     int Unlock();
 
 private:
-    pthread_mutex_t* mutex_;
+    pthread_mutex_t mutex_;
 };
 
 #endif // CMUTEX_H_

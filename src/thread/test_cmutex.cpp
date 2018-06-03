@@ -7,20 +7,17 @@ using namespace std;
 
 class Number {
 public:
-    Number() : num_(0) {
-        mutex_ = new Cmutex; 
-    }
-    ~Number() {
-        delete mutex_; 
-    }
+    Number() : num_(0) {}
+
+    ~Number() {}
 
     void PlusOne() {
-        mutex_->Lock();
+        mutex_.Lock();
         cout << "begin num:" << num_ << endl;
         num_ += 1;
         sleep(1);
         cout << "finish num:" << num_ << endl;
-        mutex_->Unlock();
+        mutex_.Unlock();
     }
 
     void PrintNum() {
@@ -29,7 +26,7 @@ public:
 
 private:
     int num_;
-    Cmutex* mutex_;
+    Cmutex mutex_;
 };
 
 
