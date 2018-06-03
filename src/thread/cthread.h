@@ -17,7 +17,7 @@ public:
     static unsigned int ThreadID();
 
 private:
-    pthread_t* tidp_;
+    pthread_t tidp_;
     void* (*func_)(void*);
     void* arg_;
     void** rval_ptr_;
