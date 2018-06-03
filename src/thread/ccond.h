@@ -20,8 +20,8 @@ public:
     int Broadcast();
 
 private:
-    pthread_mutex_t* mutex_;
-    pthread_cond_t* cond_;
+    pthread_mutex_t mutex_;
+    pthread_cond_t cond_;
 };
 
 #endif // CCOND_H_

@@ -17,21 +17,20 @@ void* DoWork(void* arg) {
 }
 
 int main(int argc, char *argv[]) {
-    Ccond* cond = new Ccond;
-    Cthread cthread = Cthread(&DoWork, (void *)cond);
+    Ccond cond;
+    Cthread cthread = Cthread(&DoWork, (void *)&cond);
     cthread.Start();
     cout << "main thread id:" << Cthread::ThreadID() << endl;
     sleep(1);
-    cond->Lock();
+    cond.Lock();
     has_work = true;
     cout << "main thread add work, id:" << Cthread::ThreadID() << endl;
-    cond->Unlock();
+    cond.Unlock();
     sleep(1);
     cout << "main thread unlock, id:" << Cthread::ThreadID() << endl;
-    cond->Signal();
+    cond.Signal();
     cout << "main thread Signal, id:" << Cthread::ThreadID() << endl;
-    // sleep(1);
+    sleep(1);
     void * rval;
     cthread.Join(&rval);
-    delete cond;
 }

@@ -15,7 +15,7 @@ public:
     int Unlock();
 
 private:
-    pthread_rwlock_t* rwlock_;
+    pthread_rwlock_t rwlock_;
 };
 
 #endif // CRWLOCK_H_
