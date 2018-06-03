@@ -1,7 +1,7 @@
 #include "cthread.h"
 using namespace std;
 
-void* sum(void *arg) {
+void* sum(void* arg) {
     int* nums = (int*)arg;
     int* result = new int;
     *result = 0;
@@ -10,15 +10,24 @@ void* sum(void *arg) {
         *result += nums[i];
     }
     cout << "sum func" << endl;
-    pthread_exit((void *)result);
+    while (true) {
+        sleep(1);
+        cout << "loop" << endl;
+    }
+    return (void *)result;
 }
 
 int main(int argc, char *argv[]) {
     int nums[] = {1, 2, 3, 4};
     Cthread cthread = Cthread(&sum, (void *)&nums);
     cthread.Start();
-    void* result_ptr;
-    cthread.Join(&result_ptr);
-    cout << "sum result:" << *(int*)result_ptr << endl;
-    delete (int *)result_ptr;
+    sleep(2);
+    int* result_ptr;
+    cthread.Stop();
+    int ret = cthread.Join((void **)&result_ptr);
+    if (ret == 0) {
+        cout << "sum result:" << *(int*)result_ptr << endl;
+        delete (int *)result_ptr;
+    }
+    cout << "finish" << endl;
 }

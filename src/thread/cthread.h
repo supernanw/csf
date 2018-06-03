@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <pthread.h>
+#include "unistd.h"
 
 class Cthread {
 public:
@@ -10,13 +11,14 @@ public:
     virtual ~Cthread();
 
     int Start();
-
-    int Join(void** rval_ptr);
+    int Join(void **rval_ptr);
+    int Stop();
 
 private:
+    pthread_t* tidp_;
     void* (*func_)(void*);
     void* arg_;
-    pthread_t* tidp_;
+    void** rval_ptr_;
 };
 
 #endif // CTHREAD_H_
