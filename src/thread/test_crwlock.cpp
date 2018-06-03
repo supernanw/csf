@@ -27,4 +27,3 @@ int main(int argc, char *argv[]) {
     cout << "try rdlock after wrlock, ret:" << strerror(ret) << endl;
     rwlock.Unlock();
 }
-
