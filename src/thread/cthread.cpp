@@ -35,3 +35,7 @@ int Cthread::Stop() {
     std::cout << "cthread Stop return:" << ret << std::endl;
     return ret;
 }
+
+unsigned int Cthread::ThreadID() {
+    return (unsigned int)pthread_self();
+}

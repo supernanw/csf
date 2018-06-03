@@ -14,6 +14,7 @@ void* DoWork(void* arg) {
     }
     cout << "do work, thread id:" << Cthread::ThreadID() << endl;
     cond->Unlock();
+    return (void *)0;
 }
 
 int main(int argc, char *argv[]) {
@@ -30,8 +31,5 @@ int main(int argc, char *argv[]) {
     cout << "main thread unlock, id:" << Cthread::ThreadID() << endl;
     cond->Signal();
     cout << "main thread Signal, id:" << Cthread::ThreadID() << endl;
-    // sleep(1);
-    void * rval;
-    cthread.Join(&rval);
-    delete cond;
+    cthread.Join(NULL);
 }

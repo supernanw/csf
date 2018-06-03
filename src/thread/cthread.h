@@ -14,6 +14,8 @@ public:
     int Join(void **rval_ptr);
     int Stop();
 
+    static unsigned int ThreadID();
+
 private:
     pthread_t* tidp_;
     void* (*func_)(void*);

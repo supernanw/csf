@@ -9,6 +9,10 @@ public:
     Ccond();
     virtual ~Ccond();
 
+    int Lock();
+    int TryLock();
+    int Unlock();
+
     int Wait();
     int TimedWait(const struct timespec* timeout);
     int TimedWait(time_t seconds, long nanoseconds=0);
@@ -21,4 +25,3 @@ private:
 };
 
 #endif // CCOND_H_
-
