@@ -12,6 +12,7 @@ public:
 
     int Start();
     int Join(void **rval_ptr);
+    int Detach();
     int Stop();
 
     static unsigned int ThreadID();

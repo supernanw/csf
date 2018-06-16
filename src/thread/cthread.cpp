@@ -19,6 +19,10 @@ int Cthread::Join(void** rval_ptr) {
     return ret;
 }
 
+int Cthread::Detach() {
+    return pthread_detach(tidp_);
+}
+
 int Cthread::Stop() {
     return pthread_cancel(tidp_);
 }
